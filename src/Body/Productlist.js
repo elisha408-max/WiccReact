@@ -92,6 +92,7 @@ function Productlist(props) {
               <button
                 type="button"
                 className="btn btn-outline-primary"
+                disabled={quantity >= stock ? true : false}
                 onClick={() => {
                   setQuantity(quantity + 1);
                 }}

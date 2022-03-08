@@ -4,8 +4,7 @@ import {
   PRODUCT_LIST_SUCCESS,
   ADD_TO_CART,
   REMOVE_FROM_CART,
-  INCREMENT_NUMBER,
-  DECREMENT_NUMBER,
+  FILTER_ITEMS,
 } from "../constants";
 
 const initialState = {
@@ -39,7 +38,7 @@ const productReducer = (state = initialState, action) => {
       const index = state.cart.findIndex(
         (item) => item.id === current_product.id
       );
-       console.log(index)
+      console.log(index);
       if (index >= 0) {
         tmp_cart[index] = { ...current_product, quantity };
       } else {
@@ -57,29 +56,20 @@ const productReducer = (state = initialState, action) => {
         ...state,
         cart: state.cart.filter((item) => item.id !== action.payload.id),
       };
-    case INCREMENT_NUMBER:
-      const item1 = state.products.find(
-        (prod) => prod.id === action.payload.id
-      );
-
-      const productID = action.payload.id;
-      const productIndex = state.products.findIndex(
-        (item) => item.id === productID
-      );
-
-      const tmp_products = state.products;
-
-      const tmp_product = tmp_product[productIndex];
-      // const ;
-
+    case FILTER_ITEMS:
+      const searchedItems = state.products.filter((item) => {
+        return (
+          parseInt(item.price.split("").slice(1).join("") * 120) >=
+            action.payload.Price &&
+          parseInt(item.price.split("").slice(1).join("") * 120) <=
+            action.payload.Price1 &&
+          item.category[1] === action.payload.Category
+        );
+      });
+      console.log(searchedItems, "searchedItems");
       return {
         ...state,
-        counter: state.counter + action.payload.number,
-      };
-    case DECREMENT_NUMBER:
-      return {
-        ...state,
-        counter: state.counter - action.payload.number,
+        products: searchedItems,
       };
 
     default:

@@ -15,37 +15,12 @@ const Cart = (props) => {
   const [show, setShow] = useState(false);
   const navigate = useNavigate();
   const [quantity, setQuantity] = React.useState(0);
-  // const [total, setTotal] = useState(0);
+  const [total, setTotal] = useState(0);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   let total123 = 0;
-  // var totalCartPrice = 0;
-
-  // const deleteId = (id) => {
-  //   let filteredItem = cartValue.filter((item) => item.id !== id);
-  //   console.log(filteredItem, "filteredItem");
-  //   setCartValue(filteredItem);
-
-  //   // console.log(cardValue,'hjbljh')
-  // };
-  // const increment = (id) => {
-  //   setCount(parseInt(count) + 1);
-  // };
-  // console.log(count,'store')
-  // console.log(store,'store')
   const dispatch = useDispatch();
   const { cart: cartValue } = useSelector((state) => state.product);
-
-  // const totalCartPrice = cartValue?.reduce(
-  //   (total,
-  //   (item) => {
-  //     console.log(item);
-  //     const price = item.price.split("").slice(1).join("") * 120;
-
-  //     return total + item.quantity * 2;
-  //   }),
-  //   0
-  // );
 
   return (
     <>
@@ -69,7 +44,7 @@ const Cart = (props) => {
           {cartValue.map((item, index) => {
             const subTotal =
               item.price.split("").slice(1).join("") * 120 * item.quantity;
-
+            // setTotal(item.quantity);
             return (
               <div className="row" key={index}>
                 <div className="col-6">
@@ -123,9 +98,7 @@ const Cart = (props) => {
                     <button
                       type="button"
                       className="btn btn-outline-success"
-                      onClick={() => {
-                        // increment();
-                      }}
+                      onClick={() => item.quantity + 1}
                     >
                       +
                     </button>

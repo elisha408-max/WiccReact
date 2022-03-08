@@ -16,7 +16,7 @@ import FadeLoader from "react-spinners/FadeLoader";
 import { css } from "@emotion/react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchProduct } from "../redux/actions/products";
-
+import { filterItems } from "../redux/actions/Filter";
 const validationSchema = () =>
   Yup.object().shape({
     Price: Yup.string().required(),
@@ -33,7 +33,7 @@ const Productinfo = (props) => {
   const [api, setApi] = useState([]);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
+  const dispatch = useDispatch();
   const override = css`
     display: block;
     margin: 50px auto;
@@ -79,7 +79,6 @@ const Productinfo = (props) => {
   const todo = useSelector((state) => state.product.products);
   const isLoading = useSelector((state) => state.product.isLoading);
 
-  const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchProduct());
   }, []);
@@ -92,26 +91,22 @@ const Productinfo = (props) => {
     },
     onSubmit: (values) => {
       alert(JSON.stringify(values, null, 2));
-      console.log(values.Price, "values");
+      console.log(values.Price, "values.Price");
+      console.log(values.Price1, "values.Price1");
+      console.log(values.Category, "values.Category");
 
-      const result = todo.filter((item) => {
-        console.log(
-          parseInt(item.price.split("").slice(1).join("") * 120),
-          "itemprice"
-        );
+      dispatch(filterItems(values.Price, values.Price1, values.Category));
 
-        console.log(item.createDate, "item date");
-
-        return (
-          parseInt(item.price.split("").slice(1).join("") * 120) >=
-            values.Price &&
-          parseInt(item.price.split("").slice(1).join("") * 120) <=
-            values.Price1 &&
-          item.category[1] === values.Category
-        );
-      });
-      console.log(result, "result");
-      // setTodo(result);
+      // const result = todo.filter((item) => {
+      //   return (
+      //     parseInt(item.price.split("").slice(1).join("") * 120) >=
+      //       values.Price &&
+      //     parseInt(item.price.split("").slice(1).join("") * 120) <=
+      //       values.Price1 &&
+      //     item.category[1] === values.Category
+      //   );
+      // });
+      // console.log(result, "result");
     },
   });
 
@@ -241,7 +236,7 @@ const Productinfo = (props) => {
           ) : (
             todo.map((item) => (
               <Productlist
-              item={item}
+                item={item}
                 key={item.id}
                 name={item.name}
                 price={item.price}
