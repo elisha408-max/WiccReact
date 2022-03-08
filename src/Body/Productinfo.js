@@ -1,12 +1,11 @@
 import React from "react";
 import Productlist from "./Productlist";
 import { AiTwotoneFilter } from "react-icons/ai";
-// import { AiTwotoneCalendar } from "react-icons/ai";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Offcanvas from "react-bootstrap/Offcanvas";
-import { useFormik } from "formik";
+import { useFormik, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { array } from "yup";
 import { ToastContainer, toast } from "react-toastify";
@@ -54,27 +53,8 @@ const Productinfo = (props) => {
   const Hello = (array) => {
     toast.success("Data inserted successfully");
 
-    // if (cartValue === 0){
-    //   alert('ghvh')
-    // }else if(cartValue >0){
-    //   setCardData([...cardData, array]);
-    // }
-
     setCartValue([...cartValue, array]);
   };
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-
-  //     const response = await axios.get(
-  //       "https://electronic-ecommerce.herokuapp.com/api/v1/product"
-  //     );
-  //     setTodo(response.data.data.product);
-  //     setLoading(false)
-  //   };
-
-  //   fetchData();
-  // }, []);
 
   const todo = useSelector((state) => state.product.products);
   const isLoading = useSelector((state) => state.product.isLoading);
@@ -82,7 +62,13 @@ const Productinfo = (props) => {
   useEffect(() => {
     dispatch(fetchProduct());
   }, []);
-  const { values, handleSubmit, handleChange } = useFormik({
+  const validationSchema = Yup.object({
+    Price: Yup.string().required("Minimum price is required"),
+    Price1: Yup.string().required("Maximum price is required"),
+    Date: Yup.date().required("Date is required"),
+    Category: Yup.string().required("Category is required"),
+  });
+  const { values, handleSubmit, handleChange, errors } = useFormik({
     initialValues: {
       Price: "",
       Price1: "",
@@ -90,24 +76,9 @@ const Productinfo = (props) => {
       Category: "",
     },
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
-      console.log(values.Price, "values.Price");
-      console.log(values.Price1, "values.Price1");
-      console.log(values.Category, "values.Category");
-
       dispatch(filterItems(values.Price, values.Price1, values.Category));
-
-      // const result = todo.filter((item) => {
-      //   return (
-      //     parseInt(item.price.split("").slice(1).join("") * 120) >=
-      //       values.Price &&
-      //     parseInt(item.price.split("").slice(1).join("") * 120) <=
-      //       values.Price1 &&
-      //     item.category[1] === values.Category
-      //   );
-      // });
-      // console.log(result, "result");
     },
+    validationSchema,
   });
 
   return (
@@ -150,9 +121,9 @@ const Productinfo = (props) => {
                           value={values.Price}
                         />
 
-                        {/* {errors?.Price && (
-                          <small className="text-danger">{errors.name}</small>
-                        )} */}
+                        {errors?.Price && (
+                          <small className="text-danger">{errors.Price}</small>
+                        )}
                       </div>
 
                       <div className="col-6">

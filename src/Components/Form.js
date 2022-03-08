@@ -2,21 +2,14 @@ import React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
-// const validationSchema = Yup.object().shape({
-//   Name:  Yup.string(),
-//   Billing: "",
-//   Delivery: "",
-//   Telephone: "",
-//   Date: "",
-// });
-
 const Form = () => {
-  // const validate = (values) => {
-  //   const errors = {};
-  //   if (!values.Name) {
-  //     errors.Name = "Required";
-  //   }
-  // };
+  const validationSchema = Yup.object({
+    Name: Yup.string().required(),
+    Billing: Yup.string().required(),
+    Delivery: Yup.string().required(),
+    Telephone: Yup.number().required(),
+    Date: Yup.date().required(),
+  });
   const formik = useFormik({
     initialValues: {
       Name: "",
@@ -25,11 +18,11 @@ const Form = () => {
       Telephone: "",
       Date: "",
     },
-    // validationSchema,
+
     onSubmit: (values, resetForm) => {
-      alert(JSON.stringify(values, null, 2));
-      formik.resetForm(values);
+      formik.resetForm();
     },
+    validationSchema,
   });
   return (
     <>
@@ -52,7 +45,11 @@ const Form = () => {
                 name="Name"
                 onChange={formik.handleChange}
                 value={formik.values.Name}
+                onBlur={formik.handleBlur}
               />
+              {formik.errors.Name && formik.touched.Name ? (
+                <span className="text-danger">{formik.errors.Name}</span>
+              ) : null}
             </div>
             <div className="mt-4">
               <label for="billing" className="form-label">
@@ -65,7 +62,11 @@ const Form = () => {
                 name="Billing"
                 onChange={formik.handleChange}
                 value={formik.values.Billing}
+                onBlur={formik.handleBlur}
               />
+              {formik.errors.Billing && formik.touched.Billing ? (
+                <span className="text-danger">{formik.errors.Billing}</span>
+              ) : null}
             </div>
             <div className="mt-4">
               <label for="delivery" className="form-label">
@@ -78,7 +79,11 @@ const Form = () => {
                 name="Delivery"
                 onChange={formik.handleChange}
                 value={formik.values.Delivery}
+                onBlur={formik.handleBlur}
               />
+              {formik.errors.Delivery && formik.touched.Delivery ? (
+                <span className="text-danger">{formik.errors.Delivery}</span>
+              ) : null}
             </div>
             <div className="mt-4">
               <label for="telephone" className="form-label">
@@ -91,7 +96,11 @@ const Form = () => {
                 name="Telephone"
                 onChange={formik.handleChange}
                 value={formik.values.Telephone}
+                onBlur={formik.handleBlur}
               />
+              {formik.errors.Telephone && formik.touched.Telephone ? (
+                <span className="text-danger">{formik.errors.Telephone}</span>
+              ) : null}
             </div>
             <div className="mt-4">
               <label for="date" className="form-label">
@@ -104,7 +113,11 @@ const Form = () => {
                 name="Date"
                 onChange={formik.handleChange}
                 value={formik.values.Date}
+                onBlur={formik.handleBlur}
               />
+              {formik.errors.Date && formik.touched.Date ? (
+                <span className="text-danger">{formik.errors.Date}</span>
+              ) : null}
             </div>
 
             <button type="submit" className="btn btn-primary mt-3">
