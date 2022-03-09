@@ -5,7 +5,7 @@ import logo12 from "../img/Logo.png";
 import Cart from "./Cart";
 
 const Navbar = (props) => {
-  const { count, setCount, cartValue, setCartValue,total1,setTotal1 } = props;
+  const { count, setCount, cartValue, setCartValue, total1, setTotal1 } = props;
   // console.log(value, "Value");
   return (
     <div className="Navbar text-white sticky-top">
@@ -29,7 +29,7 @@ const Navbar = (props) => {
                 setCartValue={setCartValue}
                 total1={total1}
                 setTotal1={setTotal1}
-                 className='designForMobile'
+                className="designForMobile"
               />
 
               <CgProfile className="reactIcon d-none d-lg-block" />

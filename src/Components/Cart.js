@@ -3,17 +3,18 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Image123 from "../img/Logo.png";
 import { BsCartPlus } from "react-icons/bs";
-import { AiOutlineDelete } from "react-icons/ai";
+
 import { useSelector, useDispatch } from "react-redux";
-import { removeFromCart } from "../redux/actions/cart";
+
 import { Link, useNavigate } from "react-router-dom";
 import Form from "./Form";
+import ModalBody from "./ModalBody";
 // import { Form } from "formik";
 
 const Cart = (props) => {
   const { count, setCount, total1, setTotal1 } = props;
   const [show, setShow] = useState(false);
-  const navigate = useNavigate();
+
   const [quantity, setQuantity] = React.useState(0);
   const [total, setTotal] = useState(0);
   const handleClose = () => setShow(false);
@@ -40,7 +41,7 @@ const Cart = (props) => {
         <Modal.Header closeButton>
           <Modal.Title>Items Added</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
+        {/* <Modal.Body>
           {cartValue.map((item, index) => {
             const subTotal =
               item.price.split("").slice(1).join("") * 120 * item.quantity;
@@ -107,23 +108,8 @@ const Cart = (props) => {
               </div>
             );
           })}
-        </Modal.Body>
-
-        <Modal.Footer>
-          <div>
-            <p className="fw-bold">{`Total Amount:Rs.  ${total123}`} </p>
-
-            <Button
-              disabled={cartValue?.length < 1 ? true : false}
-              onClick={() => {
-                navigate("/checkout");
-              }}
-              variant="success"
-            >
-              Checkout
-            </Button>
-          </div>
-        </Modal.Footer>
+        </Modal.Body> */}
+        <ModalBody />
       </Modal>
     </>
   );

@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Counter1 from "../Components/Counter1";
 import { decrement } from "../redux/actions/counter";
 import { increment } from "../redux/actions/counter";
+import { Link } from "react-router-dom";
 
 function Productlist(props) {
   // console.log(props, "props");
@@ -59,16 +60,19 @@ function Productlist(props) {
     <>
       <div className="col-lg-3 col-md-6 col-12">
         <div className="card p-1 mt-2">
-          <img
-            src={`https://electronic-ecommerce.herokuapp.com/${image}`}
-            className="card-img-top img-fluid"
-            alt="..."
-            style={{
-              height: "300px",
+          <Link to="/product">
+            <img
+              src={`https://electronic-ecommerce.herokuapp.com/${image}`}
+              className="card-img-top img-fluid"
+              alt="..."
+              style={{
+                height: "300px",
 
-              objectFit: "contain",
-            }}
-          />
+                objectFit: "contain",
+              }}
+            />
+          </Link>
+
           <div className="card-body">
             <div
               className="btn-group buttonStyling"

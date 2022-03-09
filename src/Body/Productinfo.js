@@ -57,6 +57,7 @@ const Productinfo = (props) => {
   };
 
   const todo = useSelector((state) => state.product.products);
+  // console.log(todo);
   const isLoading = useSelector((state) => state.product.isLoading);
 
   useEffect(() => {

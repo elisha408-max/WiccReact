@@ -85,7 +85,7 @@ ul {
 
 .Checkout form {
   max-width: 800px;
-  margin: 8rem auto;
+  margin: 3rem auto;
   border-radius: 0.8rem;
   background-color: #fff;
   box-shadow: 0 10px 15px -3px rgb(0 0 0 / 7%), 0 4px 6px -2px rgb(0 0 0 / 5%);
@@ -93,4 +93,11 @@ ul {
 }
 .headerFormPage {
   padding: 10px 4px;
+}
+.modalBodyForm .checkout {
+  display: none;
+  margin: 3rem auto;
+}
+.modalBodyForm .modal-body {
+  margin: 5rem auto;
 }

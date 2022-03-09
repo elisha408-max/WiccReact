@@ -1,15 +1,15 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import Navbar from "./Components/Navbar";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Body from "./Body";
 import { connect } from "react-redux";
-import { BrowserRouter as Routes, Route,Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 
-import store from './redux/reducers/store';
+import store from "./redux/reducers/store";
 import { Provider } from "react-redux";
-
-
+import Form from "../src/Components/Form";
+import Product from "./Components/Product";
 
 function App() {
   const [count, setCount] = useState([]);
@@ -20,7 +20,6 @@ function App() {
 
   // const dispatch = useDispatch();
 
-
   // useEffect(()=>{
   //   dispatch(fetchProduct())
   // },[])
@@ -28,7 +27,6 @@ function App() {
 
   return (
     <div className="App">
-      <Provider store = {store}>
       <Navbar
         count={count}
         setCount={setCount}
@@ -37,57 +35,27 @@ function App() {
         total1={total1}
         setTotal1={setTotal1}
       ></Navbar>
-      
-      <Body
-        count={count}
-        setCount={setCount}
-        cartValue={cartValue}
-        setCartValue={setCartValue}
-        total1={total1}
-        setTotal1={setTotal1}
-      />
-      </Provider>
+
+      <Routes>
+        <Route
+          exact
+          path="/"
+          element={
+            <Body
+              count={count}
+              setCount={setCount}
+              cartValue={cartValue}
+              setCartValue={setCartValue}
+              total1={total1}
+              setTotal1={setTotal1}
+            />
+          }
+        />
+        <Route exact path="/checkout" element={<Form />} />
+        <Route exact path="/product" element={<Product />} />
+      </Routes>
     </div>
   );
 }
 
 export default App;
-
-// import React from "react"
-
-// import "./App.css"
-
-// import { connect } from "react-redux"
-
-// import {
-//    increment,
-//    decrement
-// } from "./redux/actions/counter";
-
-// function App(props) {
-//   return (
-//     <div className="App">
-//       <div>Count: {props.count}</div>
-
-//       <button onClick={() => props.increment()}>Increase Count</button>
-
-//       <button onClick={() => props.decrement()}>Decrease Count</button>
-//     </div>
-//   )
-// }
-
-// const mapStateToProps = state => {
-//   return {
-//     count: state.counter.count,
-//   }
-// }
-
-// const mapDispatchToProps = dispatch => {
-//   return {
-//     increment: () => dispatch(increment()),
-
-//     decrement: () => dispatch(decrement()),
-//   }
-// }
-
-// export default connect(mapStateToProps, mapDispatchToProps)(App)

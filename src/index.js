@@ -1,17 +1,18 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Form from "./Components/Form";
+import { BrowserRouter } from "react-router-dom";
+// import Form from "./Components/Form";
+import { Provider } from "react-redux";
+import store from "../src/redux/reducers/store";
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Routes>
-        <Route exact path="/" element={<App />} />
-        <Route exact path="/checkout" element={<Form />} />
-      </Routes>
-    </BrowserRouter>
+    <Provider store={store}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </Provider>
   </React.StrictMode>,
 
   document.getElementById("root")
