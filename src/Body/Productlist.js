@@ -42,25 +42,12 @@ function Productlist(props) {
   const [quantity, setQuantity] = React.useState(0);
 
   const dispatch = useDispatch();
-  // const count = useSelector((state) => state.product.counter);
-  // console.log(count,'count')
 
-  // const incrementCount = (id) => {
-  //   count >= stock ? setDisable(true) : setCount(count + 1);
-  // };
-  // const decrementCount = () => {
-  //   const decrement = count > 0 ? setCount(count - 1) : 0;
-  // };
-  // const disableFunction = () => {
-  //   count === 0 ? setDisable1(true) : Hello(props);
-  //   click(count, props.price);
-  // };
-  //  console.log(id)
   return (
     <>
       <div className="col-lg-3 col-md-6 col-12">
         <div className="card p-1 mt-2">
-          <Link to="/product">
+          <Link to={`/product/${item.id}`}>
             <img
               src={`https://electronic-ecommerce.herokuapp.com/${image}`}
               className="card-img-top img-fluid"

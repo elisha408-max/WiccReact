@@ -101,3 +101,15 @@ ul {
 .modalBodyForm .modal-body {
   margin: 5rem auto;
 }
+.footer {
+  padding: 60px;
+  background: #3e4245;
+}
+.footerBottom {
+  background: #0f2027;
+  background: -webkit-linear-gradient(to right, #2c5364, #203a43, #0f2027);
+  background: linear-gradient(to right, #2c5364, #1e1f1f, #2b363e);
+
+  color: white;
+  /* background: #1e1f1f;*/
+}

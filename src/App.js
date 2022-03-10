@@ -5,25 +5,17 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Body from "./Body";
 import { connect } from "react-redux";
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
-
 import store from "./redux/reducers/store";
 import { Provider } from "react-redux";
 import Form from "../src/Components/Form";
-import Product from "./Components/Product";
+import Product from "./Components/ProductDetail";
+import ProductDetail from "./Components/ProductDetail";
+import Footer from "./Components/Footer";
 
 function App() {
   const [count, setCount] = useState([]);
   const [cartValue, setCartValue] = useState([]);
   const [total1, setTotal1] = useState(0);
-
-  // const counter = useSelector((state)=> state.counter.count)
-
-  // const dispatch = useDispatch();
-
-  // useEffect(()=>{
-  //   dispatch(fetchProduct())
-  // },[])
-  // console.log(props ,'props')
 
   return (
     <div className="App">
@@ -52,8 +44,9 @@ function App() {
           }
         />
         <Route exact path="/checkout" element={<Form />} />
-        <Route exact path="/product" element={<Product />} />
+        <Route exact path={`/product/:productId`} element={<ProductDetail />} />
       </Routes>
+      <Footer />
     </div>
   );
 }
