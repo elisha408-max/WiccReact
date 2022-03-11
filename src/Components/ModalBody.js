@@ -22,7 +22,7 @@ const ModalBody = () => {
           // setTotal(item.quantity);
           return (
             <div className="row" key={index}>
-              <div className="col-6">
+              <div className="col-md-6 col-12">
                 <div className="row">
                   <div className="col-5">
                     <img
@@ -43,7 +43,7 @@ const ModalBody = () => {
                   </div>
                 </div>
               </div>
-              <div className="col-6">
+              <div className="col-md-6 col-12">
                 <b className="text-success stockStyling">{item.stock}</b> &nbsp;
                 &nbsp; &nbsp;{" "}
                 <span style={{ fontSize: "20px" }}>

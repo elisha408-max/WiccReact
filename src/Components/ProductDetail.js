@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { addToCart } from "../redux/actions/cart";
 
-const ProductDetail = ({ match }) => {
+const ProductDetail = ({}) => {
   const { productId } = useParams();
   const todo = useSelector((state) => state.product.products[productId - 1]);
   console.log(todo, "productDetails");
@@ -15,18 +15,19 @@ const ProductDetail = ({ match }) => {
   const result = ` ${day}/${month}/${year}`;
   const [quantity, setQuantity] = React.useState(0);
   const dispatch = useDispatch();
+
   return (
     <>
       <div className="container">
         <div className="row " style={{ marginTop: "100px" }}>
-          <div className="col-5">
+          <div className="col-md-5 col-12">
             <img
               src={`https://electronic-ecommerce.herokuapp.com/${todo.image}`}
               className="card-img-top img-fluid"
               alt="..."
             />
           </div>
-          <div className="col-7">
+          <div className="col-md-7 col-12">
             <div className="ms-5 " style={{ textAlign: "left" }}>
               <h2 className="mt-1">{todo.name}</h2>
               <span className="text-success">{amt}</span>

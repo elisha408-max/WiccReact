@@ -11,39 +11,17 @@ import Form from "../src/Components/Form";
 import Product from "./Components/ProductDetail";
 import ProductDetail from "./Components/ProductDetail";
 import Footer from "./Components/Footer";
+import Login from "./Components/Login";
 
 function App() {
-  const [count, setCount] = useState([]);
-  const [cartValue, setCartValue] = useState([]);
-  const [total1, setTotal1] = useState(0);
-
   return (
     <div className="App">
-      <Navbar
-        count={count}
-        setCount={setCount}
-        cartValue={cartValue}
-        setCartValue={setCartValue}
-        total1={total1}
-        setTotal1={setTotal1}
-      ></Navbar>
+      <Navbar></Navbar>
 
       <Routes>
-        <Route
-          exact
-          path="/"
-          element={
-            <Body
-              count={count}
-              setCount={setCount}
-              cartValue={cartValue}
-              setCartValue={setCartValue}
-              total1={total1}
-              setTotal1={setTotal1}
-            />
-          }
-        />
+        <Route exact path="/" element={<Body />} />
         <Route exact path="/checkout" element={<Form />} />
+        <Route exact path="/login" element={<Login />} />
         <Route exact path={`/product/:productId`} element={<ProductDetail />} />
       </Routes>
       <Footer />

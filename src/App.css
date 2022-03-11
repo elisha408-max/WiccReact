@@ -35,7 +35,7 @@ ul {
   margin-left: 90px;
 }
 .footer {
-  margin-top: 195px;
+  margin-top: 45px;
 }
 .stockStyling {
   margin-left: 112px;
@@ -112,4 +112,12 @@ ul {
 
   color: white;
   /* background: #1e1f1f;*/
+}
+.login form {
+  max-width: 680px;
+  margin: 3rem auto;
+  border-radius: 0.8rem;
+  background-color: #fff;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 7%), 0 4px 6px -2px rgb(0 0 0 / 5%);
+  padding: 20px 14px;
 }

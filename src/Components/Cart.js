@@ -12,9 +12,7 @@ import ModalBody from "./ModalBody";
 // import { Form } from "formik";
 
 const Cart = (props) => {
-  const { count, setCount, total1, setTotal1 } = props;
   const [show, setShow] = useState(false);
-
   const [quantity, setQuantity] = React.useState(0);
   const [total, setTotal] = useState(0);
   const handleClose = () => setShow(false);

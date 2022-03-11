@@ -37,12 +37,12 @@ const Form = () => {
     <>
       <div className="container">
         <div className="row">
-          <div className="col-6">
+          <div className="col-lg-6 col-12 order-1 order-md-0">
             <div className="modalBodyForm">
               <ModalBody />
             </div>
           </div>
-          <div className="col-6">
+          <div className="col-lg-6 col-12 order-0 order-md-1">
             <div className="Checkout" style={{ padding: "10px" }}>
               <div className="container">
                 <form onSubmit={formik.handleSubmit}>

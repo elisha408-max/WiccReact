@@ -6,7 +6,7 @@ import { AiOutlineHome } from "react-icons/ai";
 const Footer = () => {
   return (
     <>
-      <section class="footer text-white">
+      <section class="footer text-white ">
         <div class="container-fluid px-lg-5">
           <div class="row">
             <div class="col-lg-3 col-md-6 col-12">

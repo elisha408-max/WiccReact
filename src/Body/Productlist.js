@@ -29,7 +29,6 @@ function Productlist(props) {
 
   const [array, setArray] = useState([]);
   const imageLink = `https://electronic-ecommerce.herokuapp.com/${image}`;
-  // const [count, setCount] = useState(0);
   const [disable1, setDisable1] = React.useState(false);
   const [disable, setDisable] = React.useState(false);
   let dateObj = new Date(date);
@@ -104,9 +103,7 @@ function Productlist(props) {
                 className="btn btn-primary"
                 data-index={id}
                 onClick={() => {
-                  // alert(array);
                   dispatch(addToCart(item, quantity));
-                  // disableFunction();
                 }}
                 disabled={quantity < 1}
               >

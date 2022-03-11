@@ -24,11 +24,8 @@ const validationSchema = () =>
   });
 
 const Productinfo = (props) => {
-  const { count, setCount, cartValue, setCartValue, price, total1, setTotal1 } =
-    props;
   let [loading, setLoading] = useState(true);
   const [show, setShow] = useState(false);
-  // const [todo, setTodo] = useState([]);
   const [api, setApi] = useState([]);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -39,25 +36,8 @@ const Productinfo = (props) => {
     text-align: center;
   `;
 
-  const click = (items, price) => {
-    let amt = price.split("").slice(1).join("") * 120;
-
-    setCount([items, ...count]);
-    setTotal1(total1 + amt * items);
-
-    if (count === 0) {
-      alert("jbjkn;");
-    }
-  };
-
-  const Hello = (array) => {
-    toast.success("Data inserted successfully");
-
-    setCartValue([...cartValue, array]);
-  };
-
   const todo = useSelector((state) => state.product.products);
-  // console.log(todo);
+
   const isLoading = useSelector((state) => state.product.isLoading);
 
   useEffect(() => {
@@ -178,7 +158,7 @@ const Productinfo = (props) => {
                     </select>
                   </div>
 
-                  <section className="footer">
+                  <section className="footer bg-white">
                     <hr />
                     <div className="d-flex justify-content-end">
                       <button
@@ -216,11 +196,6 @@ const Productinfo = (props) => {
                 stock={item.stock}
                 image={item.image}
                 date={item.createDate}
-                click={click}
-                Hello={Hello}
-                // array1={array1}
-                // setArray1={setArray1}
-                // alert={parentAlert}
               />
             ))
           )}

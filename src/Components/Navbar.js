@@ -1,6 +1,7 @@
 import React from "react";
 // import { BsCartPlus } from "react-icons/bs";
 import { CgProfile } from "react-icons/cg";
+import { Link } from "react-router-dom";
 import logo12 from "../img/Logo.png";
 import Cart from "./Cart";
 
@@ -14,9 +15,9 @@ const Navbar = (props) => {
         style={{ opacity: "0.9" }}
       >
         <div className="container">
-          <a className="navbar-brand" href="#">
+          <Link className="navbar-brand" to="/">
             <img src={logo12} width="100" className="img-fluid" />
-          </a>
+          </Link>
 
           <div className=" navbar-collapse col-6" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0"></ul>
@@ -31,8 +32,9 @@ const Navbar = (props) => {
                 setTotal1={setTotal1}
                 className="designForMobile"
               />
-
-              <CgProfile className="reactIcon d-none d-lg-block" />
+              <Link to="/login">
+                <CgProfile className="reactIcon d-none d-lg-block" />
+              </Link>
             </form>
           </div>
         </div>
